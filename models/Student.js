@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const schema = new mongoose.schema({
+const schema = new mongoose.Schema({
   firstName: { type: String, maxlength: 64, required: true },
   lastName: { type: String, maxlength: 64, required: true },
   nickName: { type: String, maxlength: 64 },

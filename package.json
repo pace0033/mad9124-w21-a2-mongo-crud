@@ -2,11 +2,11 @@
   "name": "mad9124-w22-a2-mongo-crud",
   "version": "0.1.0",
   "description": "Backend web service to support a simple class list application called cListR",
-  "main": "app.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon server.js"
   },
   "keywords": [
     "MAD9124",
@@ -24,8 +24,10 @@
   "private": true,
   "dependencies": {
     "express": "^4.17.3",
+    "express-mongo-sanitize": "^2.2.0",
     "mongoose": "^6.2.4",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "xss": "^1.0.11"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
