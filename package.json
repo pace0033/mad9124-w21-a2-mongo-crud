@@ -3,21 +3,31 @@
   "version": "0.1.0",
   "description": "Backend web service to support a simple class list application called cListR",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "keywords": [
     "MAD9124",
     "W22"
   ],
   "author": {
-    "name" : "Will Paceley",
-    "email" : "pace0033@algonquinlive.com"
+    "name": "Will Paceley",
+    "email": "pace0033@algonquinlive.com"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/pace0033/mad9124-w21-a2-mongo-crud"
   },
   "license": "ISC",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.4",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
