@@ -38,6 +38,28 @@ router.post('/', sanitizeBody, async (req, res) => {
   }
 })
 
+const update =
+  (overwrite = false) =>
+  async (req, res) => {
+    try {
+      const document = await Student.findByIdAndUpdate(
+        req.params.id,
+        req.sanitizedBody,
+        {
+          new: true,
+          overwrite,
+          runValidators: true,
+        }
+      );
+      if (!document) throw new Error('Resource not found');
+      res.send({ data: formatResponseData(document) });
+    } catch (err) {
+      sendResourceNotFound(req, res);
+    }
+  }
+router.put('/:id', sanitizeBody, update(true));
+router.patch('/:id', sanitizeBody, update(false));
+
 /**
  * Format the response data object according to JSON:API v1.0
  * @param {string} type The resource collection name, e.g. 'cars'
