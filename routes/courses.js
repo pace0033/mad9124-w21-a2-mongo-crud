@@ -4,6 +4,21 @@ import sanitizeBody from '../middleware/sanitizeBody.js';
 
 const router = express.Router();
 
+router.get('/', async (req, res) => {
+  const collection = await Course.find();
+  res.send({ data: formatResponseData(collection) });
+})
+
+router.get('/:id', async (req, res) => {
+  try {
+    const document = await Course.findById(req.params.id).populate('students');
+    if (!document) throw new Error('Resource not found');
+    res.json({ data: formatResponseData(document) });
+  } catch (err) {
+    sendResourceNotFound(req, res);
+  }
+})
+
 router.post('/', sanitizeBody, async (req, res) => {
   let newDocument = new Course(req.sanitizedBody);
   try {
