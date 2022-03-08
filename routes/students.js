@@ -4,6 +4,21 @@ import sanitizeBody from '../middleware/sanitizeBody.js';
 
 const router = express.Router();
 
+router.get('/', async (req, res) => {
+  const collection = await Student.find();
+  res.send({ data: formatResponseData(collection) });
+})
+
+router.get('/:id', async (req, res) => {
+  try {
+    const document = await Student.findById(req.params.id);
+    if (!document) throw new Error('Resource not found');
+    res.json({ data: formatResponseData(document) });
+  } catch (err) {
+    sendResourceNotFound(req, res);
+  }
+})
+
 router.post('/', sanitizeBody, async (req, res) => {
   let newDocument = new Student(req.sanitizedBody);
   try {
@@ -47,8 +62,8 @@ function sendResourceNotFound(req, res) {
     error: [
       {
         status: '404',
-        title: 'Resource does nto exist',
-        description: `We could not find a person with id: ${req.params.id}`,
+        title: 'Resource does not exist',
+        description: `We could not find a student with id: ${req.params.id}`,
       },
     ],
   });
