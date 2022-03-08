@@ -60,6 +60,16 @@ const update =
 router.put('/:id', sanitizeBody, update(true));
 router.patch('/:id', sanitizeBody, update(false));
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const document = await Student.findByIdAndRemove(req.params.id);
+    if (!document) throw new Error('Resource not found');
+    res.send({ data: formatResponseData(document) });
+  } catch (err) {
+    sendResourceNotFound(req, res);
+  }
+})
+
 /**
  * Format the response data object according to JSON:API v1.0
  * @param {string} type The resource collection name, e.g. 'cars'
