@@ -1,19 +1,23 @@
 {
-  "name": "mad9124-w21-a2-mongo-crud",
+  "name": "mad9124-w22-a2-mongo-crud",
   "version": "0.1.0",
-  "description": "",
+  "description": "Backend web service to support a simple class list application called cListR",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "MAD9124",
-    "W21"
+    "W22"
   ],
-  "author": "",
-  "contributors": [
-    "Robert McKenney <mckennr@algonquincollege.com>"
-  ],
+  "author": {
+    "name" : "Will Paceley",
+    "email" : "pace0033@algonquinlive.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pace0033/mad9124-w21-a2-mongo-crud"
+  },
   "license": "ISC",
   "private": true
 }
